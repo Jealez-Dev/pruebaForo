@@ -1,0 +1,8 @@
+com/example/foro/service/HiloService.class
+com/example/foro/model/Categoria.class
+com/example/foro/controller/HiloController.class
+com/example/foro/dto/HiloResponseDTO.class
+com/example/foro/dto/HiloRequestDTO.class
+com/example/foro/model/Hilo.class
+com/example/foro/repository/HiloRepository.class
+com/example/foro/ForoApplication.class

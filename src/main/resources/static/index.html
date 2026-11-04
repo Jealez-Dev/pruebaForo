@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro | Hilos</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<main class="shell">
+    <header class="topbar">
+        <div>
+            <p class="eyebrow">Comunidad</p>
+            <h1>Hilos del foro</h1>
+        </div>
+        <button id="nuevoHilo" class="button button-primary" type="button">Nuevo hilo</button>
+    </header>
+
+    <section class="toolbar" aria-label="Filtros de hilos">
+        <label class="search-field">
+            <span class="sr-only">Buscar hilos</span>
+            <input id="busqueda" type="search" placeholder="Buscar por título o contenido..." autocomplete="off">
+        </label>
+        <label>
+            <span class="sr-only">Filtrar por categoría</span>
+            <select id="filtroCategoria">
+                <option value="">Todas las categorías</option>
+                <option value="GENERAL">General</option>
+                <option value="DUDAS">Dudas</option>
+                <option value="ANUNCIOS">Anuncios</option>
+            </select>
+        </label>
+    </section>
+
+    <p id="estado" class="status" role="status"></p>
+    <section id="listaHilos" class="thread-list" aria-live="polite"></section>
+
+    <dialog id="dialogoHilo">
+        <form id="formularioHilo" method="dialog" class="thread-form">
+            <div class="form-heading">
+                <div>
+                    <p class="eyebrow">Publicación</p>
+                    <h2 id="tituloFormulario">Nuevo hilo</h2>
+                </div>
+                <button id="cerrarDialogo" class="icon-button" type="button" aria-label="Cerrar">×</button>
+            </div>
+            <input id="hiloId" type="hidden">
+            <label>Título <input id="titulo" name="titulo" maxlength="100" required></label>
+            <label>Contenido <textarea id="contenido" name="contenido" rows="6" required></textarea></label>
+            <label>Autor <input id="autor" name="autor" required></label>
+            <label>Categoría
+                <select id="categoria" name="categoria" required>
+                    <option value="GENERAL">General</option>
+                    <option value="DUDAS">Dudas</option>
+                    <option value="ANUNCIOS">Anuncios</option>
+                </select>
+            </label>
+            <p id="errorFormulario" class="form-error" role="alert"></p>
+            <div class="form-actions">
+                <button id="cancelarDialogo" class="button button-muted" type="button">Cancelar</button>
+                <button class="button button-primary" type="submit">Guardar hilo</button>
+            </div>
+        </form>
+    </dialog>
+</main>
+<script src="/app.js" defer></script>
+</body>
+</html>

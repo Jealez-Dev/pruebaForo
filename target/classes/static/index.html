@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro | Hilos</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="/" aria-label="Inicio del foro"><span class="brand-mark">f</span><span>foro</span></a>
+        <nav class="main-nav" aria-label="Navegación principal">
+            <a class="nav-link active" href="/">Inicio</a>
+            <a class="nav-link" href="#listaHilos">Comunidades</a>
+        </nav>
+        <button id="nuevoHilo" class="button button-primary" type="button">Crear hilo</button>
+    </div>
+</header>
+<main class="shell">
+    <header class="page-heading">
+        <div>
+            <p class="eyebrow">Tu comunidad</p>
+            <h1>Inicio</h1>
+        </div>
+    </header>
+
+    <div class="layout">
+        <section class="feed-column" aria-label="Hilos del foro">
+            <section class="toolbar" aria-label="Filtros de hilos">
+                <label class="search-field">
+                    <span class="search-icon" aria-hidden="true">⌕</span>
+                    <span class="sr-only">Buscar hilos</span>
+                    <input id="busqueda" type="search" placeholder="Buscar en foro" autocomplete="off">
+                </label>
+                <label>
+                    <span class="sr-only">Filtrar por categoría</span>
+                    <select id="filtroCategoria">
+                        <option value="">Todas</option>
+                        <option value="GENERAL">General</option>
+                        <option value="DUDAS">Dudas</option>
+                        <option value="ANUNCIOS">Anuncios</option>
+                    </select>
+                </label>
+            </section>
+            <p id="estado" class="status" role="status"></p>
+            <section id="listaHilos" class="thread-list" aria-live="polite"></section>
+        </section>
+
+        <aside class="community-panel">
+            <div class="community-banner"></div>
+            <div class="community-body">
+                <div class="community-icon">f/</div>
+                <h2>Foro comunidad</h2>
+                <p>Un espacio para compartir ideas, resolver dudas y conversar.</p>
+                <dl class="community-stats">
+                    <div><dt>Miembros</dt><dd>1.2k</dd></div>
+                    <div><dt>En línea</dt><dd>24</dd></div>
+                </dl>
+            </div>
+        </aside>
+    </div>
+
+    <dialog id="dialogoHilo">
+        <form id="formularioHilo" method="dialog" class="thread-form">
+            <div class="form-heading">
+                <div>
+                    <p class="eyebrow">Publicación</p>
+                    <h2 id="tituloFormulario">Nuevo hilo</h2>
+                </div>
+                <button id="cerrarDialogo" class="icon-button" type="button" aria-label="Cerrar">×</button>
+            </div>
+            <input id="hiloId" type="hidden">
+            <label>Título <input id="titulo" name="titulo" maxlength="100" required></label>
+            <label>Contenido <textarea id="contenido" name="contenido" rows="6" required></textarea></label>
+            <label>Autor <input id="autor" name="autor" required></label>
+            <label>Categoría
+                <select id="categoria" name="categoria" required>
+                    <option value="GENERAL">General</option>
+                    <option value="DUDAS">Dudas</option>
+                    <option value="ANUNCIOS">Anuncios</option>
+                </select>
+            </label>
+            <p id="errorFormulario" class="form-error" role="alert"></p>
+            <div class="form-actions">
+                <button id="cancelarDialogo" class="button button-muted" type="button">Cancelar</button>
+                <button class="button button-primary" type="submit">Guardar hilo</button>
+            </div>
+        </form>
+    </dialog>
+</main>
+<script src="/app.js" defer></script>
+</body>
+</html>

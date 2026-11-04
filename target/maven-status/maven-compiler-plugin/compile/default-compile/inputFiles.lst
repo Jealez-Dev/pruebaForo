@@ -1,0 +1,8 @@
+/home/jean/pruebaForo/src/main/java/com/example/foro/ForoApplication.java
+/home/jean/pruebaForo/src/main/java/com/example/foro/controller/HiloController.java
+/home/jean/pruebaForo/src/main/java/com/example/foro/dto/HiloRequestDTO.java
+/home/jean/pruebaForo/src/main/java/com/example/foro/dto/HiloResponseDTO.java
+/home/jean/pruebaForo/src/main/java/com/example/foro/model/Categoria.java
+/home/jean/pruebaForo/src/main/java/com/example/foro/model/Hilo.java
+/home/jean/pruebaForo/src/main/java/com/example/foro/repository/HiloRepository.java
+/home/jean/pruebaForo/src/main/java/com/example/foro/service/HiloService.java
