@@ -11,6 +11,9 @@ data/*.trace.db
 .vscode/
 .github/
 
+# Frontend dependencies and build metadata
+frontend/node_modules/
+
 # Operating system
 .DS_Store
 Thumbs.db
