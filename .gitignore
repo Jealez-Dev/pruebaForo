@@ -1,0 +1,20 @@
+# Maven
+target/
+
+# H2 local database
+data/*.mv.db
+data/*.trace.db
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.github/
+
+# Operating system
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
