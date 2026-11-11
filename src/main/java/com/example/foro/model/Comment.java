@@ -35,6 +35,7 @@ public class Comment {
     @JoinColumn(name = "comentario_padre_id")
     private Comment comentarioPadre;
 
+
     @Column(nullable = false, updatable = false)
     private LocalDateTime fechaCreacion;
 

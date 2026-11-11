@@ -2,8 +2,11 @@ package com.example.foro.service;
 
 import com.example.foro.dto.HiloRequestDTO;
 import com.example.foro.dto.HiloResponseDTO;
+import com.example.foro.model.Comment;
 import com.example.foro.model.Hilo;
+import com.example.foro.repository.CommentRepository;
 import com.example.foro.repository.HiloRepository;
+import com.example.foro.repository.VoteRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,9 +25,16 @@ public class HiloService {
     private static final Pattern SEPARADOR_TEXTO = Pattern.compile("[^\\p{L}\\p{N}]+");
 
     private final HiloRepository hiloRepository;
+    private final CommentRepository commentRepository;
+    private final VoteRepository voteRepository;
 
-    public HiloService(HiloRepository hiloRepository) {
+    public HiloService(
+            HiloRepository hiloRepository,
+            CommentRepository commentRepository,
+            VoteRepository voteRepository) {
         this.hiloRepository = hiloRepository;
+        this.commentRepository = commentRepository;
+        this.voteRepository = voteRepository;
     }
 
     public HiloResponseDTO crear(HiloRequestDTO request) {
@@ -124,6 +134,19 @@ public class HiloService {
 
     public void eliminar(Long id) {
         Hilo hilo = obtenerEntidad(id);
+
+        List<Comment> comentarios = commentRepository.findByHiloIdOrderByFechaCreacionAsc(id);
+        voteRepository.deleteByHilo(hilo);
+        if (!comentarios.isEmpty()) {
+            voteRepository.deleteByComentarios(comentarios);
+
+            // Primero se eliminan las referencias entre respuestas para poder borrar todos los comentarios.
+            comentarios.forEach(comentario -> comentario.setComentarioPadre(null));
+            commentRepository.flush();
+            commentRepository.deleteAll(comentarios);
+            commentRepository.flush();
+        }
+
         hiloRepository.delete(hilo);
     }
 
